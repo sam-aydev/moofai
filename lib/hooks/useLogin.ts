@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { signIn as signInApi } from "../supabase/client/action";
+import { signIn as signInApi } from "@/supabase/action";
 
 export function useLogin() {
   const router = useRouter();

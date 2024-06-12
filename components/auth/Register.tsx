@@ -1,5 +1,5 @@
 "use client";
-import { signUp } from "@/supabase/action";
+import { useRegister } from "@/lib/hooks/useRegister";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -8,6 +8,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
+  const { status, error, signUp } = useRegister();
 
   function handleSignUp(e: any) {
     e.preventDefault();
@@ -36,6 +37,7 @@ export default function Register() {
           <div className="mt-2">
             <label className="block">Username:</label>
             <input
+              disabled={status === "pending"}
               onKeyDown={() => setIsError(false)}
               onClick={(e: any) => setFullName(e.target.value)}
               type="text"
@@ -48,6 +50,7 @@ export default function Register() {
           <div className="mt-1">
             <label className="block">Email:</label>
             <input
+              disabled={status === "pending"}
               onKeyDown={() => setIsError(false)}
               onChange={(e: any) => setEmail(e.target.value)}
               type="email"
@@ -60,6 +63,7 @@ export default function Register() {
           <div className="mt-1">
             <label className="block">Password:</label>
             <input
+              disabled={status === "pending"}
               onKeyDown={() => setIsError(false)}
               onChange={(e: any) => setPassword(e.target.value)}
               type="password"
@@ -70,7 +74,10 @@ export default function Register() {
           </div>
 
           <div>
-            <button className="text-white bg-black border-2 border-white px-2 py-2 rounded w-full mt-2 hover:bg-slate-800">
+            <button
+              disabled={status === "pending"}
+              className="text-white bg-black border-2 border-white px-2 py-2 rounded w-full mt-2 hover:bg-slate-800"
+            >
               Register Now
             </button>
           </div>

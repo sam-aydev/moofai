@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "@/supabase/action";
+import { useLogin } from "@/lib/hooks/useLogin";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -8,6 +8,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
+  const { status, error, signIn } = useLogin();
 
   function handleLogin(e: any) {
     e.preventDefault();
@@ -37,6 +38,7 @@ export default function Login() {
           <div className="mt-1">
             <label className="block">Email:</label>
             <input
+              disabled={status === "pending"}
               onChange={(e: any) => setEmail(e.target.value)}
               onKeyDown={() => setIsError(false)}
               required
@@ -50,6 +52,7 @@ export default function Login() {
           <div className="mt-1">
             <label className="block">Password:</label>
             <input
+              disabled={status === "pending"}
               onChange={(e: any) => setPassword(e.target.value)}
               onKeyDown={() => setIsError(false)}
               type="password"
@@ -61,7 +64,10 @@ export default function Login() {
           </div>
 
           <div>
-            <button className="text-white bg-black border-2 border-white px-2 py-2 rounded w-full mt-2 hover:bg-slate-800">
+            <button
+              disabled={status === "pending"}
+              className="text-white bg-black border-2 border-white px-2 py-2 rounded w-full mt-2 hover:bg-slate-800"
+            >
               Sign In
             </button>
           </div>
