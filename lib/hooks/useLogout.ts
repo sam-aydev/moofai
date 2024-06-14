@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { logout as logoutApi } from "../action";
+import { SignOut as logoutApi } from "@/supabase/action";
 
 export function useLogout() {
   const { status, mutate: logout } = useMutation({
