@@ -39,7 +39,10 @@ export default function Register() {
             <input
               disabled={status === "pending"}
               onKeyDown={() => setIsError(false)}
-              onClick={(e: any) => setFullName(e.target.value)}
+              onChange={(e: any) => {
+                setFullName(e.target.value);
+                setIsError(false);
+              }}
               type="text"
               name="name"
               id="name"
@@ -52,7 +55,10 @@ export default function Register() {
             <input
               disabled={status === "pending"}
               onKeyDown={() => setIsError(false)}
-              onChange={(e: any) => setEmail(e.target.value)}
+              onChange={(e: any) => {
+                setEmail(e.target.value);
+                setIsError(false);
+              }}
               type="email"
               name="email"
               id="email"
@@ -65,7 +71,10 @@ export default function Register() {
             <input
               disabled={status === "pending"}
               onKeyDown={() => setIsError(false)}
-              onChange={(e: any) => setPassword(e.target.value)}
+              onChange={(e: any) => {
+                setPassword(e.target.value);
+                setIsError(false);
+              }}
               type="password"
               name="password"
               id="password"

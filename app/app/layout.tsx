@@ -1,9 +1,7 @@
-import AllLayout from "@/components/layout/AllLayout";
 import FirstLayout from "@/components/layout/firstLayout";
 import SecondLayout from "@/components/layout/secondLayout";
 import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
-import { HiBars3CenterLeft } from "react-icons/hi2";
 
 export default async function Layout({
   children,
