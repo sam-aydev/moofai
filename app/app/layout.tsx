@@ -14,11 +14,14 @@ export default async function Layout({
   //   redirect("/login");
   // }
   return (
-    <div className="grid grid-cols-12 gap-6 h-screen">
+    <div className="grid grid-cols-12  min-h-screen ">
       <FirstLayout />
-      <div className="col-span-12 sm:col-span-8 md:col-span-9 h-screen sm:overflow-y-scroll bg-white p-4 ">
+      <div className="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-7 h-screen  bg-slate-100 p-2 ">
         <div className=" p-4">{children}</div>
       </div>{" "}
+      <div className="hidden sm:grid sm:bg-slate-200 sm:w-full sm:col-span-4 md:col-span-4 lg:col-span-3 text-black border-l-2 border-l-black">
+        Whatsapp
+      </div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import TextToSpeech from "@/components/texttospeech";
 export default function Page() {
-  return <div>jhj</div>;
+  return <TextToSpeech />;
 }
