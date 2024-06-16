@@ -6,14 +6,14 @@ export default function TextToSpeech() {
   return (
     <div>
       <div>
-        <div className="flex justify-end font-semibold cursor-pointer">
+        {/* <div className="flex justify-end font-semibold cursor-pointer">
           <p className="flex bg-slate-300 p-2 rounded hover:bg-white hover:border-black border-2 border-slate-400">
             All My Converted Speech{" "}
             <span>
               <BiChevronRight className="size-6" />{" "}
             </span>
           </p>
-        </div>
+        </div> */}
         <div className="mt-6">
           <form action="">
             <div>

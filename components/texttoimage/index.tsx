@@ -6,14 +6,14 @@ export default function TextToImage() {
   return (
     <div>
       <div>
-        <div className="flex justify-end font-semibold cursor-pointer">
+        {/* <div className="flex justify-end font-semibold cursor-pointer">
           <p className="flex bg-slate-300 p-2 rounded hover:bg-white hover:border-black border-2 border-slate-400">
             My Generated Images{" "}
             <span>
               <BiChevronRight className="size-6" />{" "}
             </span>
           </p>
-        </div>
+        </div> */}
         <div className="mt-6">
           <form action="">
             <div>
@@ -26,7 +26,7 @@ export default function TextToImage() {
               ></textarea>
             </div>
             <div className="flex justify-end">
-              <button className="p-2 w-1/3 text-center bg-black text-white rounded hover:bg-slate-800">
+              <button className="p-2 w-1/2 sm:w-1/3 text-center bg-black text-white rounded hover:bg-slate-800">
                 Convert My Text To Image
               </button>
             </div>

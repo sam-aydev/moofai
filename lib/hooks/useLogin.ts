@@ -13,7 +13,7 @@ export function useLogin() {
     mutationFn: signInApi,
     mutationKey: ["auth"],
     onSuccess: () => {
-      toast.success("Welcome to social!");
+      toast.success("Welcome to MoofAI!");
       router.push("/app");
     },
     onError: (err) => {
