@@ -14,7 +14,7 @@ export default function GenerateText() {
             </span>
           </p>
         </div> */}
-        <div className="mt-6">
+        <div className="mt-6 lg:mx-auto lg:w-2/3">
           <form action="">
             <div>
               <textarea
@@ -27,7 +27,7 @@ export default function GenerateText() {
             </div>
             <div className="flex justify-end">
               <button className="p-2 w-1/2  sm:w-1/3 text-center bg-black text-white rounded hover:bg-slate-800">
-                Get Information
+                Generate Answer
               </button>
             </div>
           </form>

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { signUp as signUpApi } from "@/supabase/action";
+import { signUp as signUpApi } from "@/supabase/server/action";
 
 export function useRegister() {
   const {
