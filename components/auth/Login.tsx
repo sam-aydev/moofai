@@ -1,6 +1,6 @@
 "use client";
 
-import { useLogin } from "@/lib/hooks/useLogin";
+import { useLogin } from "@/lib/hooks/auth/useLogin";
 import Link from "next/link";
 import { useState } from "react";
 

@@ -3,8 +3,8 @@ import Image from "next/image";
 import { GoSignOut } from "react-icons/go";
 import Avatar from "@/public/avatar.png";
 import { HiChevronDoubleRight } from "react-icons/hi2";
-import { useUser } from "@/lib/hooks/useUser";
-import { useSignOut } from "@/lib/hooks/useSignout";
+import { useUser } from "@/lib/hooks/auth/useUser";
+import { useSignOut } from "@/lib/hooks/auth/useSignout";
 
 export default function HeaderLayout() {
   const { user, status } = useUser();

@@ -15,3 +15,18 @@ export async function getCurrentUser() {
 
   return data?.user;
 }
+
+export async function getAllAnswers() {
+  const supabase = await createClient();
+  const { data: profile, error: profileError } = await supabase.auth.getUser();
+  const { data, error } = await supabase
+    .from("generatetext")
+    .select("*")
+    .eq("profileId", profile.user?.id);
+
+  if (!profile) throw new Error("No user found");
+  if (profileError) throw new Error(error?.message);
+  if (error) throw new Error(error.message);
+  console.log(data);
+  return data;
+}
