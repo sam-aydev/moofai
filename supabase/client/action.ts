@@ -22,6 +22,7 @@ export async function getAllAnswers() {
   const { data, error } = await supabase
     .from("generatetext")
     .select("*")
+    .order("createdAt", { ascending: false })
     .eq("profileId", profile.user?.id);
 
   if (!profile) throw new Error("No user found");

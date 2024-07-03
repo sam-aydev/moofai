@@ -1,26 +1,30 @@
 "use client";
 
+import { useCreateAudio } from "@/lib/hooks/generateText/useCreateAudio";
+import { useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
 
 export default function TextToSpeech() {
+  const [text, setText] = useState<string>("");
+  const { getAudio, status, error } = useCreateAudio();
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    console.log(text);
+    getAudio(text);
+  }
   return (
     <div>
       <div>
-        {/* <div className="flex justify-end font-semibold cursor-pointer">
-          <p className="flex bg-slate-300 p-2 rounded hover:bg-white hover:border-black border-2 border-slate-400">
-            All My Converted Speech{" "}
-            <span>
-              <BiChevronRight className="size-6" />{" "}
-            </span>
-          </p>
-        </div> */}
         <div className="mt-6">
-          <form action="">
+          <form action="" onSubmit={handleSubmit}>
             <div>
               <textarea
                 name="tts"
                 id="tts"
                 rows={10}
+                value={text}
+                onChange={(e: any) => setText(e.target.value)}
                 placeholder="Put in your text...."
                 className="border-2 border-black rounded w-full resize-none p-2"
               ></textarea>
