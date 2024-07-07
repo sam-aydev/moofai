@@ -1,5 +1,5 @@
 "use client";
-import { useRegister } from "@/lib/hooks/useRegister";
+import { useRegister } from "@/lib/hooks/auth/useRegister";
 import Link from "next/link";
 import { useState } from "react";
 

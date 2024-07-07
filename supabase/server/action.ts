@@ -30,15 +30,15 @@ export async function signUp({ email, password, fullName }: any) {
   redirect("/login");
 }
 
-export async function createText({ question, generatedAnswer }: any) {
+export async function createText({ text, buffer }: any) {
   const supabase = await createClient();
-  if (!question || !generatedAnswer) throw new Error("No question or answer");
-  if (!question && !generatedAnswer) throw new Error("No question and answer");
+  if (!text || !buffer) throw new Error("No question or answer");
+  if (!text && !buffer) throw new Error("No question and answer");
   const { data: profile, error: profileError } = await supabase.auth.getUser();
 
   const { data, error } = await supabase
-    .from("generatetext")
-    .insert({ question, generatedAnswer, profileId: profile.user?.id });
+    .from("generateaudio")
+    .insert({ text, buffer, profileId: profile.user?.id });
   if (error) throw new Error("There is error sending to database");
   if (profileError) throw new Error("No user found");
   return data;
