@@ -9,19 +9,19 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
-    redirect("/login");
-  }
+  // const supabase = await createClient();
+  // const { data, error } = await supabase.auth.getUser();
+  // if (error || !data?.user) {
+  //   redirect("/login");
+  // }
 
   return (
-    <div>
+    <div className="">
       <HeaderLayout />
       <div className="grid grid-cols-12  ">
         <FirstLayout />
-        <div className="col-span-12 sm:col-span-8 lg:col-span-9 h-screen  bg-white p-2 ">
-          <div className=" p-4">{children}</div>
+        <div className=" col-span-12 sm:col-span-8 lg:col-span-9 h-screen  bg-white p-2">
+          <div className=" p-4  ">{children}</div>
         </div>{" "}
       </div>
     </div>

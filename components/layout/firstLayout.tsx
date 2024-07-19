@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BiImages, BiUser } from "react-icons/bi";
-import { BsChat } from "react-icons/bs";
-import { MdDashboard, MdOutlinePayments } from "react-icons/md";
-
-import { AiFillAudio } from "react-icons/ai";
+import {
+  MdDashboard,
+  MdManageHistory,
+  MdSettings,
+  MdTranslate,
+} from "react-icons/md";
 
 export default function FirstLayout() {
   const pathname = usePathname();
@@ -29,63 +30,47 @@ export default function FirstLayout() {
             </span>
           </li>
         </Link>
-
-        <Link href="/app/tts">
+        <Link href="/app/translate">
           <li
             style={{ marginLeft: "-16px" }}
             className={
-              pathname === "/app/tts"
+              pathname === "/app/translate"
                 ? "sm:mb-8  w-fit sm:w-[200px] sm:flex sm:items-center sm:justify-start sm:px-2 sm:space-x-8 bg-black  text-center text-white  sm:font-medium sm:text-[16px] text-[10px] p-1 rounded sm:py-2   "
                 : "sm:mb-8  w-fit sm:w-[200px] sm:flex sm:items-center sm:justify-start sm:px-2 sm:space-x-8 bg-white text-black text-center  sm:text-[16px] text-[10px] p-1 sm:py-2   rounded  hover:bg-black hover:text-white"
             }
           >
-            <AiFillAudio className="size-4  mx-auto text-center sm:mx-0 sm:size-6" />
-            <span className="sm:hidden">TTS</span>
+            <MdTranslate className="size-4  mx-auto text-center sm:mx-0 sm:size-6" />
+            <span className="sm:hidden">Translate Text</span>
             <span className="hidden sm:flex text-center sm:justify-center sm:items-center">
-              Text To Speech
+              Translate Text
             </span>
           </li>
         </Link>
 
-        <Link href="/app/tti">
+        <Link href="/app/history">
           <li
             style={{ marginLeft: "-16px" }}
             className={
-              pathname === "/app/tti"
-                ? "sm:mb-8 w-fit sm:w-[200px]  sm:flex sm:space-x-8 sm:justify-start sm:px-2  bg-black text-center text-white font-semibold sm:font-medium sm:text-[16px] text-[10px] p-1  sm:py-2  rounded  "
-                : "sm:mb-8 w-fit sm:w-[200px]  sm:flex sm:items-center sm:space-x-8 sm:px-2 sm:justify-start  bg-white text-black text-center font-semibold sm:font-medium sm:text-[16px] text-[10px] p-1 sm:py-2  rounded  hover:bg-black hover:text-white "
-            }
-          >
-            <BiImages className="size-4  mx-auto text-center sm:mx-0 sm:size-6" />
-            <span className="">Text To Image</span>
-          </li>
-        </Link>
-
-        <Link href="/app/ask">
-          <li
-            style={{ marginLeft: "-16px" }}
-            className={
-              pathname === "/app/ask"
+              pathname === "/app/history"
                 ? "sm:mb-8 w-fit sm:w-[200px] sm:flex sm:space-x-8 sm:px-2 sm:justify-start bg-black  text-center text-white font-semibold sm:font-medium sm:text-[16px] text-[10px] p-1 sm:py-2 rounded  "
                 : "sm:mb-8 w-fit sm:w-[200px] sm:flex sm:space-x-8 sm:px-2 sm:justify-start bg-white text-black text-center font-semibold sm:font-medium sm:text-[16px] text-[10px] p-1  sm:py-2 rounded hover:bg-black hover:text-white"
             }
           >
-            <BsChat className="size-4  mx-auto text-center sm:mx-0 sm:size-6" />
-            <span className="">Ask Anything</span>
+            <MdManageHistory className="size-4  mx-auto text-center sm:mx-0 sm:size-6" />
+            <span className="">Manage History</span>
           </li>
         </Link>
-
-        <Link href="/app/billing">
+        <Link href="/app/settings">
           <li
             style={{ marginLeft: "-16px" }}
             className={
-              pathname === "/app/billing"
+              pathname === "/app/settings"
                 ? "sm:mb-8 w-fit sm:w-[200px] sm:flex sm:px-2 sm:space-x-8 sm:justify-start bg-black text-center text-white fomt-bold sm:font-medium sm:text-[16px] text-[10px] p-1 sm:py-2 rounded  "
                 : "sm:mb-8 w-fit sm:w-[200px] sm:flex sm:px-2 sm:space-x-8 sm:justify-start bg-white text-black text-center font-bold sm:font-medium sm:text-[16px] text-[10px] p-1 sm:py-2 rounded  hover:bg-black hover:text-white"
             }
           >
-            <MdOutlinePayments className="size-4 mx-auto text-center sm:mx-0 sm:size-6" />
-            <span>Billing</span>
+            <MdSettings className="size-4 mx-auto text-center sm:mx-0 sm:size-6" />
+            <span>Settings</span>
           </li>
         </Link>
       </ul>
