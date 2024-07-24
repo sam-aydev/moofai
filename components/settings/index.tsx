@@ -1,7 +1,7 @@
 export default function Settings() {
   return (
     <div>
-      <h2 className="text-center py-2 bg-slate-50 rounded-full text-xl font-semibold font-sans">
+      <h2 className="text-center py-2 bg-slate-50 rounded-full text-xl font-semibold font-sans lg:w-2/3 lg:mx-auto">
         Settings
       </h2>
       <form className="lg:w-2/3 mx-auto flex  items-center w-full h-full bg-slate-50 py-3 mt-20">

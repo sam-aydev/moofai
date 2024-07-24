@@ -5,6 +5,7 @@ import Avatar from "@/public/avatar.png";
 import { HiChevronDoubleRight } from "react-icons/hi2";
 import { useUser } from "@/lib/hooks/auth/useUser";
 import { useSignOut } from "@/lib/hooks/auth/useSignout";
+import Link from "next/link";
 
 export default function HeaderLayout() {
   const { user, status } = useUser();
@@ -19,16 +20,18 @@ export default function HeaderLayout() {
         <div className="flex space-x-6">
           <div className="flex space-x-2 justify-between items-center ">
             <p>{user?.user_metadata?.fullName}</p>
-            <div className="rounded-full flex justify-center items-center cursor-pointer border-2 space-x-3 p-1 border-black ">
-              <Image
-                src={Avatar}
-                alt="avatar"
-                width={100}
-                height={100}
-                className="size-8"
-              />
-              <HiChevronDoubleRight className="size-4" />
-            </div>
+            <Link href="/app/profile">
+              <div className="rounded-full flex justify-center items-center cursor-pointer border-2 space-x-3 p-1 border-black ">
+                <Image
+                  src={Avatar}
+                  alt="avatar"
+                  width={100}
+                  height={100}
+                  className="size-8"
+                />
+                <HiChevronDoubleRight className="size-4" />
+              </div>
+            </Link>
           </div>
           <button
             disabled={logoutStatus === "pending"}

@@ -21,7 +21,7 @@ export default async function Layout({
       <div className="grid grid-cols-12  ">
         <FirstLayout />
         <div className=" col-span-12 sm:col-span-8 lg:col-span-9 h-screen  bg-white p-2">
-          <div className=" p-4  ">{children}</div>
+          <div className=" p-2  pb-16">{children}</div>
         </div>{" "}
       </div>
     </div>

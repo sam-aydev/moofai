@@ -13,7 +13,7 @@ export default function FirstLayout() {
   const pathname = usePathname();
 
   return (
-    <div className=" sm:h-screen sm:grid  sm:col-span-4  lg:col-span-3 bg-none bg-slate-200   sm:p-2">
+    <div className=" sm:min-h-screen sm:grid  sm:col-span-4  lg:col-span-3 bg-none bg-slate-200   sm:p-2">
       <ul className="border-t-2 bg-slate-300 border-t-black space-x-4 sm:border-none w-full px-3 py-2  md:px-3 md:py-2 justify-between items-center  flex right-0 left-0  sm:flex-col sm:px-0 sm:bg-transparent fixed bottom-0 sm:static sm:justify-normal sm:mt-10  sm:w-full sm:mx-auto">
         <Link href="/app">
           <li
