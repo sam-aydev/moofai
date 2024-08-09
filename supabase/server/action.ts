@@ -30,15 +30,23 @@ export async function signUp({ email, password, fullName }: any) {
   redirect("/login");
 }
 
-export async function createText({ text, buffer }: any) {
+export async function translateMyText({
+  inputedText,
+  expectedLanguage,
+  inputedLanguage,
+  result,
+}: any) {
   const supabase = await createClient();
-  if (!text || !buffer) throw new Error("No question or answer");
-  if (!text && !buffer) throw new Error("No question and answer");
+  if (!inputedLanguage || !inputedText || !expectedLanguage)
+    throw new Error("Please add all infos!");
+  if (!inputedText) throw new Error("No text to translate");
   const { data: profile, error: profileError } = await supabase.auth.getUser();
 
-  const { data, error } = await supabase
-    .from("generateaudio")
-    .insert({ text, buffer, profileId: profile.user?.id });
+  const { data, error } = await supabase.from("translatedText").insert({
+    myText: inputedText,
+    translatedText: result,
+    profileId: profile.user?.id,
+  });
   if (error) throw new Error("There is error sending to database");
   if (profileError) throw new Error("No user found");
   return data;

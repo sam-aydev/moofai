@@ -9,11 +9,11 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  // const supabase = await createClient();
-  // const { data, error } = await supabase.auth.getUser();
-  // if (error || !data?.user) {
-  //   redirect("/login");
-  // }
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data?.user) {
+    redirect("/login");
+  }
 
   return (
     <div className="">

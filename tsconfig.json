@@ -27,7 +27,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/api/audio/route.js",
-    "lib/action/index.js"
+    "lib/action/index.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,22 +1,43 @@
 "use client";
 
-import { useCreateAudio } from "@/lib/hooks/generateText/useCreateAudio";
+import { useTranslateText } from "@/lib/hooks/translateText/useTranslateText";
 import { useState } from "react";
 import { GoCopy } from "react-icons/go";
 import { HiInformationCircle, HiXCircle } from "react-icons/hi2";
+import { reuleaux } from "ldrs";
 
+reuleaux.register();
 export default function TranslateText() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const [text, setText] = useState<string>("");
-  // const { data, getAudio, status, error } = useCreateAudio();
+  const [inputedText, setInputedText] = useState<string>("");
+  const [inputedLanguage, setInputedLanguage] = useState<string>("en");
+  const [expectedLanguage, setExpectedLanguage] = useState<string>("zh-sg");
 
-  // function handleSubmit(e: any) {
-  //   e.preventDefault();
+  const { data, translateText, status, error } = useTranslateText();
 
-  //   console.log(text);
-  //   getAudio(text);
-  // }
-  // if (status === "success") console.log(data);
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    if (!inputedText || !inputedLanguage || !expectedLanguage) return;
+
+    console.log(inputedText, inputedLanguage, expectedLanguage);
+    const allData = {
+      inputedText,
+      inputedLanguage,
+      expectedLanguage,
+    };
+    translateText(allData);
+  }
+  // if (status === "success") setIsOpen(true);
+  // if (status === "pending")
+  //   <l-reuleaux
+  //     size="37"
+  //     stroke="5"
+  //     stroke-length="0.15"
+  //     bg-opacity="0.1"
+  //     speed="1.2"
+  //     color="black"
+  //   ></l-reuleaux>;
+
   return (
     <div>
       <div className="lg:w-4/5 md:mx-auto">
@@ -26,7 +47,7 @@ export default function TranslateText() {
           </h2>
         </div>
         <div className="mt-6">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col space-y-3 px-3 py-2 bg-slate-50 rounded-xl">
               <div className="flex justify-center items-center font-semibold space-x-10">
                 <h2 className="w-[50%]">Language To Be Translated</h2>
@@ -36,48 +57,61 @@ export default function TranslateText() {
               <div className="flex justify-between space-x-2 ">
                 <div className="border-2 rounded-full p-2 w-[50%] cursor-pointer">
                   <select
+                    disabled={status === "pending"}
                     name=""
+                    value={inputedLanguage}
+                    onChange={(e: any) => setInputedLanguage(e.target.value)}
                     id=""
                     className=" bg-slate-50 w-full outline-none"
                   >
-                    <option value="">English</option>
-                    <option value="">French</option>
-                    <option value="">Spanish</option>
-                    <option value="">Hungary</option>
-                    <option value="">India</option>
-                    <option value="">Swahili</option>
-                    <option value="">Mandarin</option>
+                    <option value="en">English</option>
+                    <option value="auto">Automatic</option>
+                    <option value="zu">Zulu</option>
+                    <option value="ur">Urdu</option>
+                    <option value="am">Albanian</option>
+                    <option value="bn">Bengali</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="ca">Catalan(Spanish)</option>
+                    <option value="zh-sg">Chinese(Singapore)</option>
+                    <option value="hi">Hindi</option>
                   </select>
                 </div>
                 <div className="border-2 rounded-full p-2 w-[50%] cursor-pointer ">
                   <select
+                    disabled={status === "pending"}
                     name=""
+                    value={expectedLanguage}
+                    onChange={(e: any) => setExpectedLanguage(e.target.value)}
                     id=""
                     className=" bg-slate-50 w-full outline-none"
                   >
-                    <option value="">Hindi</option>
-                    <option value="">France</option>
-                    <option value="">Spanish</option>
-                    <option value="">Hungary</option>
-                    <option value="">English</option>
-                    <option value="">Swahili</option>
+                    <option value="zh-sg">Chinese(Singapore)</option>
+                    <option value="en">English</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="am">Albanian</option>
+                    <option value="bn">Bengali</option>
+                    <option value="zu">Zulu</option>
+                    <option value="ca">Catalan(Spanish)</option>
+                    <option value="ur">Urdu</option>
+                    <option value="hi">Hindi</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <textarea
+                  disabled={status === "pending"}
                   name="tts"
                   id="tts"
                   rows={6}
-                  // value={text}
-                  // onChange={(e: any) => setText(e.target.value)}
+                  value={inputedText}
+                  onChange={(e: any) => setInputedText(e.target.value)}
                   placeholder="Put in your text...."
                   className="border-2 border-black rounded w-full resize-none p-2"
                 ></textarea>
               </div>
               <button
-                onClick={() => setIsOpen(true)}
+                disabled={status === "pending"}
                 className="p-2 w-full text-center bg-black text-white rounded hover:bg-slate-800"
               >
                 Translate Text
@@ -85,8 +119,8 @@ export default function TranslateText() {
               <p className="flex  items-center  pt-5">
                 <HiInformationCircle className="size-5 w-[30%]" />
                 <span className="text-slate-500">
-                  Note There is auto-detect which can easily detect your inputed
-                  text languages
+                  Note There is auto-detect(Automatic) which can detect your
+                  inputed text languages
                 </span>
               </p>
             </div>
